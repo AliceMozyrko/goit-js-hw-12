@@ -5,8 +5,6 @@
   |============================
 */
 @import url('./reset.css');
-@import url('./vite-promo.css');
-@import url('./header.css');
 
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
@@ -22,4 +20,128 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
+
+.loader {
+  width: 16px;
+  height: 16px;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 32px 0, -32px 0, 64px 0;
+}
+
+
+.loader::after {
+  content: '';
+  position: absolute;
+  left: -32px;
+  top: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 10px;
+  background: rgb(66, 222, 147);
+  animation: move 3s linear infinite alternate;
+  justify-content: center;
+}
+
+.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+
+@keyframes move {
+
+  0%,
+  5% {
+    left: -32px;
+    width: 16px;
+  }
+
+  15%,
+  20% {
+    left: -32px;
+    width: 48px;
+  }
+
+  30%,
+  35% {
+    left: 0px;
+    width: 16px;
+  }
+
+  45%,
+  50% {
+    left: 0px;
+    width: 48px;
+  }
+
+  60%,
+  65% {
+    left: 32px;
+    width: 16px;
+  }
+
+  75%,
+  80% {
+    left: 32px;
+    width: 48px;
+  }
+
+  95%,
+  100% {
+    left: 64px;
+    width: 16px;
+  }
+}
+
+.gallery-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  list-style: none;
+  width: 100%;
+}
+
+.gallery-item {
+  width: calc((100% - 12px*4) /5);
+  border: 1px solid #000;
+  max-width: 300px;
+  width: 100%;
+}
+
+.gallery-image {
+  max-height: 200px;
+  height: 100%;
+}
+
+.bigger-text {
+  font-weight: bold;
+}
+
+.text-body {
+  text-align: center;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.btn-load-more{
+  display: flex;
+  margin: 0 auto;
+  margin-top: 15px;
 }
