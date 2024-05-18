@@ -75,19 +75,17 @@ loadBtn.addEventListener("click", async (event) => {
   loaderEl.classList.add("is-hidden")
   loadBtn.classList.remove("is-hidden")
   scrollGallery();
+  lightbox.refresh();
   
-  if (currentPage > totalPages) {
+  if (currentPage >= totalPages ) {
      loadBtn.classList.add("is-hidden");
      iziToast.error({
-        message:     "We're sorry, but you've reached the end of search results.", 
+        message: "We're sorry, but you've reached the end of search results.", 
         timeout: 3000,
-        }) 
-    }
+     }) 
+  }
 })
 
-
-searchFormEl.addEventListener("submit", onSearchFormSubmit)
-const lightbox = new SimpleLightbox('.gallery-link');
 
 function scrollGallery() {
   const { height } = galleryEl.getBoundingClientRect();
@@ -96,3 +94,6 @@ function scrollGallery() {
   behavior: "smooth",
 });
 }
+
+searchFormEl.addEventListener("submit", onSearchFormSubmit)
+const lightbox = new SimpleLightbox('.gallery-link');
