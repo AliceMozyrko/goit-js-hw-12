@@ -56,7 +56,17 @@ async function onSearchFormSubmit(event) {
     }
     galleryEl.innerHTML = markup(data.hits); 
     totalPages = Math.ceil(data.totalHits / 15)
-    loadBtn.classList.remove("is-hidden")
+    
+    if (data.totalHits < 15) {
+      loadBtn.classList.add("is-hidden");
+      iziToast.error({
+        message: "We're sorry, but you've reached the end of search results.", 
+        timeout: 3000,
+      })  
+  } else {
+      loadBtn.classList.remove("is-hidden")
+      }
+    
     lightbox.refresh();
 
   } catch (error) {
